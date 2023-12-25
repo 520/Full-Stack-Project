@@ -1,0 +1,14 @@
+.content-container {
+    width: 100%;
+    height: 2000vh;
+}
+
+.outlet-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.outlet-constrain {
+    width: 95%;
+}

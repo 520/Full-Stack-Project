@@ -1,0 +1,145 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #e9e9e9;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+
+
+
+/*button*/
+.theme-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 25px;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  background-color: #4285f4; /* Google blue */
+  color: #fff;
+  border: 2px solid #4285f4;
+  cursor: pointer;
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0 15px;
+}
+
+
+.theme-button:hover {
+  background-color: #357ae8; /* Darker blue on hover */
+  border-color: #357ae8;
+}
+
+.theme-button:active {
+  background-color: #2f5bb7; /* Even darker blue on click */
+  border-color: #2f5bb7;
+  box-shadow: none; /* Remove box shadow on click */
+}
+
+
+.theme-button-disable {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 25px;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  background-color: grey; /* Google blue */
+  color: #fff;
+  border: 2px solid grey;
+  cursor: not-allowed;
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0 15px;
+}
+
+
+.theme-button-disable:hover {
+  background-color: grey; /* Darker blue on hover */
+  border-color: grey;
+}
+
+.theme-button-disable:active {
+  background-color: grey; /* Even darker blue on click */
+  border-color: grey;
+  box-shadow: none; /* Remove box shadow on click */
+}
+
+
+
+/* form*/
+.theme-form {
+  background-color: white;
+  max-width: 300px;
+  max-height: 600px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: scroll;
+}
+
+.theme-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.theme-form input {
+  width: 90%;
+  padding: 8px;
+  /*margin-bottom: 15px;*/
+  font-size: 17px;
+}
+
+.theme-form button {
+  background-color: #466176;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+
+/*table*/
+.theme-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.theme-table th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.theme-table th {
+  background-color: #466176;
+  color: #fff;
+}
+
+.theme-table tr:hover {
+  background-color: #f5f5f5;
+}
+
+.no-result {
+  text-align: center;
+  font-size: 18px;
+}

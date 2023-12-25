@@ -1,0 +1,17 @@
+.pop-up {
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(153,154,155,.3);
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: scroll;
+}
+
+.pop-up img {
+    width: 40px;
+    cursor: pointer;
+}
