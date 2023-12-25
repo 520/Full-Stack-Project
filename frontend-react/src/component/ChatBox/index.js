@@ -16,14 +16,9 @@ export const ChatBox = ({apiJson, onSubmit}) => {
         sendDate: ''
     }]);
     const [socket, setSocket] = useState(null);
-    const [userid, setUserid] = useState('');
-    const [realname, setRealname] = useState('');
 
     useEffect(() => {
-        const id = getId();
-        setUserid(id);
-        const realname = getRealName();
-        setRealname(realname);
+
         loadData();
         const newSocket = io('http://localhost:8003');
         setSocket(newSocket);
@@ -54,14 +49,16 @@ export const ChatBox = ({apiJson, onSubmit}) => {
     const handleClick = () => {
         if (content == "") {return}
         const data = {
-            senderId: userid,
-            senderName: 'DI XU',
+            senderId: getId(),
+            senderName: getRealName(),
             sendDate: TimeUtils.getCurrentFormattedTime(),
             content
         }
         socket.emit('message', data);
         setContent('');
-        addMessage(data).then(res => {});
+        addMessage(data).then(res => {
+            console.log(res);
+        });
     }
 
     const handleChange = (e) => {
@@ -88,7 +85,7 @@ export const ChatBox = ({apiJson, onSubmit}) => {
                     (
                         <>
                         <div className="message message-time">{datetimeNormalization(item.sendDate)}</div>
-                        <div className={item.senderId==userid?"message-right":"message-left"}>
+                        <div className={item.senderId==getId()?"message-right":"message-left"}>
                             {item.senderName}: {item.content}
                         </div>
                         </>

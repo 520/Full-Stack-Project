@@ -3,6 +3,8 @@ import {useState} from "react";
 import {addHistory} from "../../api/history";
 import {useDispatch} from "react-redux";
 import {setGlobalVariable} from "../../redux/actions";
+import StringUtils from "../../utils/StringUtils";
+import {getId} from "../../utils/cookie";
 
 export const SearchBar = ({apiJson, onSubmit}) => {
 
@@ -13,14 +15,16 @@ export const SearchBar = ({apiJson, onSubmit}) => {
     };
     const [keyword, setKeyword] = useState("");
     const handleClick = () => {
-        updateGlobalVariable(keyword);
-        let data = {
-            userId: 2,
-            keyword: keyword
+        if (!StringUtils.isEmpty(keyword)) {
+            let data = {
+                userId: getId(),
+                keyword: keyword
+            }
+            addHistory(data).then(res => {
+                console.log(res);
+            });
         }
-        addHistory(data).then(res => {
-            console.log(res);
-        });
+        updateGlobalVariable(keyword);
     }
 
     const handleInputChange = (e) => {

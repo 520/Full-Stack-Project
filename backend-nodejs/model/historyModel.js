@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
 const historySchema = new mongoose.Schema({
-    id:Number,
-    userId:Number,
+    id:String,
+    userId:String,
     keyword: String,
     createTime:Date,
     updateTime:Date,

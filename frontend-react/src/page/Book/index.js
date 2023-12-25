@@ -8,6 +8,8 @@ import {addComment, getComment} from "../../api/comment";
 import {Alert} from "../../component/Alert";
 import {addBorrowing} from "../../api/borrowing";
 import {addSave} from "../../api/save";
+import {getId, getRealName} from "../../utils/cookie";
+import ObjectUtils from "../../utils/ObjectUtils";
 
 const Book = () => {
 
@@ -29,11 +31,11 @@ const Book = () => {
     const loadData = (pageObj) => {
         let pathname = location.pathname;
         let bookId = pathname.replace("/book/","");
-        let userId = "2";
+        let userId = getId();
         getBookById(bookId, pageObj).then(res => {
             if (res.code == 0) {
                 setBook(res.data);
-                setIds({userId, bookId, title: res.data.title});
+                setIds({userId, bookId, title: res.data.title, realName: getRealName()});
             }
         });
         getComment(bookId).then(res => {
@@ -44,10 +46,17 @@ const Book = () => {
     }
 
     const handleSubmit = (data) => {
-        data = [...data, ...ids];
+        data = ObjectUtils.addObjects(data, ids);;
         addComment(data).then(res => {
            if (res.code == 0) {
                setType("success");
+               let pathname = location.pathname;
+               let bookId = pathname.replace("/book/","");
+               getComment(bookId).then(res => {
+                   if (res.code == 0) {
+                       setData(res.data);
+                   }
+               });
            } else {
                setType("failure");
            }
@@ -151,15 +160,15 @@ const Book = () => {
                         <img src="/images/avatar.png" alt="User Avatar"/>
                     </div>
                     <div className="comment-content">
-                        <div className="comment-user">{item._id}</div>
+                        <div className="comment-user">{item.realName}</div>
                         <div className="comment-text">{item.comment}</div>
                         <div className="comment-date">Posted on: {item.createTime}</div>
                         <div className="comment-rating">
-                            <span className="star">&#9733;</span>
-                            <span className="star">&#9733;</span>
-                            <span className="star">&#9733;</span>
-                            <span className="star">&#9733;</span>
-                            <span className="star">&#9734;</span>
+                            {item.score>0?(<span className="star">&#9733;</span>):(<></>)}
+                            {item.score>1?(<span className="star">&#9733;</span>):(<></>)}
+                            {item.score>2?(<span className="star">&#9733;</span>):(<></>)}
+                            {item.score>3?(<span className="star">&#9733;</span>):(<></>)}
+                            {item.score>4?(<span className="star">&#9733;</span>):(<></>)}
                         </div>
                     </div>
                 </div>

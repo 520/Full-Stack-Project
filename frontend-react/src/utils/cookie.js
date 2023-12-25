@@ -3,6 +3,7 @@ import Cookies from 'js-cookie';
 const ID = 'ID';
 const REALNAME = 'REALNAME';
 const TOKEN = 'TOKEN';
+const ROLE = 'ROLE';
 
 export function setCookie(key, value, days) {
     Cookies.set(key, value, { expires: days });
@@ -41,3 +42,13 @@ export function setRealName(realName) {
 export function getRealName() {
     return getCookie(REALNAME);
 }
+
+export function setRole(role) {
+    setCookie(ROLE, role,30);
+}
+
+export function getRole() {
+    return getCookie(ROLE);
+}
+
+

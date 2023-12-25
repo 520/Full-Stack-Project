@@ -1,7 +1,8 @@
 import "./index.css";
 import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {getRealName} from "../../utils/cookie";
+import {getRealName, getRole} from "../../utils/cookie";
+import StringUtils from "../../utils/StringUtils";
 
 export const Nav = ({apiJson, onSubmit}) => {
 
@@ -17,9 +18,12 @@ export const Nav = ({apiJson, onSubmit}) => {
             <div>
         <nav className="nav-middle">
             <Link to='/'>Home</Link>
-            <Link to='/user'>Users</Link>
+            { StringUtils.isEmpty(getRole()) == true ?
+                (<></>):
+                (<><Link to='/user'>Users</Link><Link to='/books'>Books</Link></>)
+            }
+
             <Link to='/borrowing'>Borrowings</Link>
-            <Link to='/books'>Books</Link>
             <Link to='/history'>History</Link>
             <Link to='/saved'>Favourites</Link>
         </nav>

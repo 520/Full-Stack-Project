@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
 const saveSchema = new mongoose.Schema({
-    id:Number,
-    userId:Number,
+    id:String,
+    userId:String,
     bookId: String,
     title: String,
     createTime:Date,

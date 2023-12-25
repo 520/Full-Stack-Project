@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-    id:Number,
-    senderId:Number,
-    receiverId:Number,
+    id:String,
+    senderId:String,
+    receiverId:String,
     senderName:String,
     receiverName:String,
     content:String,

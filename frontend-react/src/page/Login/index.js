@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import {getUser} from "../../api/user";
 import {Alert} from "../../component/Alert";
 import StringUtils from "../../utils/StringUtils";
-import {setCookie, setId, setRealName, setToken} from "../../utils/cookie";
+import {setCookie, setId, setRealName, setRole, setToken} from "../../utils/cookie";
 import {useNavigate} from "react-router-dom";
 
 const Login = () => {
@@ -43,6 +43,7 @@ const Login = () => {
                 setToken(res.data.token);
                 setId(res.data._id);
                 setRealName(res.data.realName);
+                setRole(res.data.role);
                 navigator('/');
             } else {
                 setType("failure");

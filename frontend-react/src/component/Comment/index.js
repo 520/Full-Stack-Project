@@ -2,7 +2,7 @@ import "./index.css";
 import {useState} from "react";
 
 export const Comment = ({ onSubmit }) => {
-    const [score, setScore] = useState('');
+    const [score, setScore] = useState('5');
     const [comment, setComment] = useState('');
 
     const handleSelectChange = (event) => {

@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import {getHistory,listHistory,addHistory,deleteHistory,updateHistory} from "../../api/history";
 import {Pagination} from "../../component/Pagination";
 import {datetimeNormalization} from "../../utils/string";
+import {getId} from "../../utils/cookie";
 
 const History = () => {
 
@@ -11,7 +12,7 @@ const History = () => {
     const [totalPages, setTotalPages] = useState(0);
 
     const loadData = (pageObj) => {
-        getHistory(2, pageObj).then(r => {
+        getHistory(getId(), pageObj).then(r => {
             if (r.data.records) {
                 setData(r.data.records);
             }

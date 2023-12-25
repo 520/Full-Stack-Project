@@ -10,6 +10,7 @@ import {
 } from "../../api/borrowing";
 import {Pagination} from "../../component/Pagination";
 import {datetimeNormalization, datetimePlusDays} from "../../utils/string";
+import {getId} from "../../utils/cookie";
 
 const Borrowing = () => {
 
@@ -18,7 +19,7 @@ const Borrowing = () => {
     const [totalPages, setTotalPages] = useState(0);
 
     const loadData = (pageObj) => {
-        getBorrowing(2, pageObj).then(r => {
+        getBorrowing(getId(), pageObj).then(r => {
             if (r.data.records) {
                 setData(r.data.records);
             }

@@ -4,6 +4,7 @@ import {getSave,listSave,addSave,deleteSave,updateSave} from "../../api/save";
 import {Pagination} from "../../component/Pagination";
 import {datetimeNormalization} from "../../utils/string";
 import {useNavigate} from "react-router-dom";
+import {getId} from "../../utils/cookie";
 const Save = () => {
 
     const [data, setData] = useState([]);
@@ -13,7 +14,7 @@ const Save = () => {
     const navigate = useNavigate();
 
     const loadData = (pageObj) => {
-        getSave(2, pageObj).then(r => {
+        getSave(getId(), pageObj).then(r => {
             if (r.data.records) {
                 setData(r.data.records);
             }
