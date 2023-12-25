@@ -37,8 +37,8 @@ module.exports.getSave = async (req, res, next) => {
         return res.json(Result.success(data));
     } catch (ex) {
         next(ex);
-        winston.error("get history failed, reason:", ex.toString());
-        return res.json(Result.failed("get history failed"));
+        winston.error("get save failed, reason:", ex.toString());
+        return res.json(Result.failed("get save failed"));
     }
 }
 

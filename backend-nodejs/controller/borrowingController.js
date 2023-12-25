@@ -14,8 +14,8 @@ module.exports.listBorrowing = async (req, res, next) => {
         return res.json(Result.success(user));
     } catch (ex) {
         next(ex);
-        winston.error("list history failed, reason:", ex);
-        return res.json(Result.failed("list history failed"));
+        winston.error("list borrowing failed, reason:", ex);
+        return res.json(Result.failed("list borrowing failed"));
     }
 }
 
@@ -36,8 +36,8 @@ module.exports.getBorrowing = async (req, res, next) => {
         return res.json(Result.success(data));
     } catch (ex) {
         next(ex);
-        winston.error("get history failed, reason:", ex.toString());
-        return res.json(Result.failed("get history failed"));
+        winston.error("get borrowing failed, reason:", ex.toString());
+        return res.json(Result.failed("get borrowing failed"));
     }
 }
 
@@ -50,8 +50,8 @@ module.exports.addBorrowing = async (req, res, next) => {
         return res.json(Result.success(user));
     } catch (ex) {
         next(ex);
-        winston.error("add history failed, reason:", ex);
-        return res.json(Result.failed("add history failed"));
+        winston.error("add borrowing failed, reason:", ex);
+        return res.json(Result.failed("add borrowing failed"));
     }
 }
 
@@ -63,8 +63,8 @@ module.exports.updateBorrowing = async (req, res, next) => {
         return res.json(Result.success(user));
     } catch (ex) {
         next(ex);
-        winston.error("update history failed, reason:", ex);
-        return res.json(Result.failed("update history failed"));
+        winston.error("update borrowing failed, reason:", ex);
+        return res.json(Result.failed("update borrowing failed"));
     }
 }
 
@@ -77,8 +77,8 @@ module.exports.returnBorrowing = async (req, res, next) => {
         return res.json(Result.success(user));
     } catch (ex) {
         next(ex);
-        winston.error("update history failed, reason:", ex);
-        return res.json(Result.failed("update history failed"));
+        winston.error("update borrowing failed, reason:", ex);
+        return res.json(Result.failed("update borrowing failed"));
     }
 }
 
@@ -95,7 +95,7 @@ module.exports.deleteBorrowing = async (req, res, next) => {
         }
     } catch (ex) {
         next(ex);
-        winston.error("delete history failed, reason:", ex);
-        return res.json(Result.failed("delete history failed"));
+        winston.error("delete borrowing failed, reason:", ex);
+        return res.json(Result.failed("delete borrowing failed"));
     }
 }
