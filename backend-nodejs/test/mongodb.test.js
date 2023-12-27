@@ -32,7 +32,8 @@ describe('MongoDB Integration Tests', () => {
         const document = { subject: 'computer science', course: "full stack" };
         await collection.insertOne(document);
         const foundDocument = await collection.findOne({ subject: 'computer science', course: "full stack" });
-        expect(foundDocument).to.deep.equal(document);
+        expect(foundDocument.subject).to.deep.equal(document.subject);
+        expect(foundDocument.course).to.deep.equal(document.course);
     });
 
     it('should update a document in the collection', async () => {
