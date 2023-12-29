@@ -1,7 +1,6 @@
 import "./index.css";
 import {useEffect, useState} from "react";
-
-export const Alert = ({display, success, failure, type}) => {
+const Alert = ({display, success, failure, type}) => {
 
     useEffect(() => {
 
@@ -21,3 +20,5 @@ export const Alert = ({display, success, failure, type}) => {
         </div>
     )
 }
+
+export default Alert;

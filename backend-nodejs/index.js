@@ -89,3 +89,5 @@ mongoose.connect(process.env.MONGODB_ADDRESS, {
     .catch((err) => {
         winston.error("Connect Failed, " ,err.message);
     });
+
+module.exports = app;

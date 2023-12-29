@@ -1,11 +1,5 @@
-class StringUtils {
-    static isEmpty(value) {
-        return Number.isNaN(value) ||
-            value === undefined ||
-            value === null ||
-            (value + "").trim() === '';
-    }
 
+class StringUtils {
     static isEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
@@ -27,6 +21,7 @@ class StringUtils {
         }
         return false;
     }
+
 }
 
 module.exports = StringUtils;
