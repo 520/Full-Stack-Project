@@ -1,7 +1,22 @@
 const assert = require('chai').assert;
-const StringUtils = require('../util/StringUtils');
+const StringUtils = require('../src/utils/StringUtils');
 
 describe('StringUtils', function(){
+
+    it('Check string empty', async function () {
+        const test1 = "a@a.com";
+        const test2 = "";
+        const test3 = " ";
+        const test4 = NaN;
+        const test5 = undefined;
+        let test6;
+        assert.equal(StringUtils.isEmpty(test1), false);
+        assert.equal(StringUtils.isEmpty(test2), true);
+        assert.equal(StringUtils.isEmpty(test3), true);
+        assert.equal(StringUtils.isEmpty(test4), true);
+        assert.equal(StringUtils.isEmpty(test5), true);
+        assert.equal(StringUtils.isEmpty(test6), true);
+    })
 
     it('Detect it is a email', async function () {
         const test1 = "a@a.com";
@@ -37,4 +52,5 @@ describe('StringUtils', function(){
         assert.equal(StringUtils.isYear(test4), false);
         assert.equal(StringUtils.isYear(test5), false);
     })
+
 });
