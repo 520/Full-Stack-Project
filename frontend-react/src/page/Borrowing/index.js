@@ -8,7 +8,7 @@ import {
     updateBorrowing,
     returnBorrowing
 } from "../../api/borrowing";
-import {Pagination} from "../../component/Pagination";
+import Pagination from "../../component/Pagination";
 import {datetimeNormalization, datetimePlusDays} from "../../utils/string";
 import {getId} from "../../utils/cookie";
 

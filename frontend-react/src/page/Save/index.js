@@ -1,7 +1,7 @@
 import './index.css';
 import {useEffect, useState} from "react";
 import {getSave,listSave,addSave,deleteSave,updateSave} from "../../api/save";
-import {Pagination} from "../../component/Pagination";
+import Pagination from "../../component/Pagination";
 import {datetimeNormalization} from "../../utils/string";
 import {useNavigate} from "react-router-dom";
 import {getId} from "../../utils/cookie";

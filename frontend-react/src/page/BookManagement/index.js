@@ -1,10 +1,10 @@
 import './index.css';
 import {useEffect, useState} from "react";
 import {listBook, deleteBook, addBook, updateBook} from "../../api/book";
-import {Pagination} from "../../component/Pagination";
+import Pagination from "../../component/Pagination";
 import {datetimeNormalization} from "../../utils/string";
-import {PopUp} from "../../component/PopUp";
-import {Alert} from "../../component/Alert";
+import PopUp from "../../component/PopUp";
+import Alert from "../../component/Alert";
 
 const BookManagement = () => {
 
