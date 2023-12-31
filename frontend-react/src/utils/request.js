@@ -2,9 +2,9 @@ import {getToken, removeToken} from "./cookie";
 
 
 let mytoken = getToken();
-let backUrl = "http://localhost:3001/login";
+let backUrl = "http://localhost:3000/login";
 let errorMsg = "Cookie has expired, Log in again please.";
-let prodCommon = "http://localhost:8003";
+let prodCommon = "http://localhost:8000";
 
 export function doPost(url, data) {
     return new Promise(function(resolve, reject) {

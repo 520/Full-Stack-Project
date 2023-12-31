@@ -20,7 +20,7 @@ const ChatBox = ({apiJson, onSubmit}) => {
     useEffect(() => {
 
         loadData();
-        const newSocket = io('http://localhost:8003');
+        const newSocket = io('http://localhost:8000');
         setSocket(newSocket);
         newSocket.on('message', (message) => {
             setData((prevMessages) => [...prevMessages, message]);

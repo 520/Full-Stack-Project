@@ -14,6 +14,8 @@ module.exports.listFine = async (req, res, next) => {
         next(ex);
         winston.error("list fine failed, reason:", ex);
         return res.json(Result.failed("list fine failed"));
+    } finally {
+        return res.json(Result.failed("list fine failed"));
     }
 }
 
@@ -28,6 +30,8 @@ module.exports.getFine = async (req, res, next) => {
         next(ex);
         winston.error("get find failed, reason:", ex);
         return res.json(Result.failed("get find failed"));
+    } finally {
+        return res.json(Result.failed("get find failed"));
     }
 }
 
@@ -39,6 +43,8 @@ module.exports.addFine = async (req, res, next) => {
     } catch (ex) {
         next(ex);
         winston.error("add find failed, reason:", ex);
+        return res.json(Result.failed("add find failed"));
+    } finally {
         return res.json(Result.failed("add find failed"));
     }
 }
@@ -55,6 +61,8 @@ module.exports.updateFine = async (req, res, next) => {
         next(ex);
         winston.error("update find failed, reason:", ex);
         return res.json(Result.failed("update find failed"));
+    } finally {
+        return res.json(Result.failed("update find failed"));
     }
 }
 
@@ -65,10 +73,10 @@ module.exports.deleteFine = async (req, res, next) => {
             {
                 isDeleted: CONSTANTS.IS_DELETED
             });
-        return res.json(Result.success(user));
+        res.json(Result.success(user));
     } catch (ex) {
         next(ex);
         winston.error("delete find failed, reason:", ex);
-        return res.json(Result.failed("delete find failed"));
+        res.json(Result.failed("delete find failed"));
     }
 }
