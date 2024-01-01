@@ -6,6 +6,7 @@ import {datetimeNormalization} from "../../utils/string";
 import PopUp from "../../component/PopUp";
 import Alert from "../../component/Alert";
 import {addUser, deleteUser, listUser, listUSER, updateUser} from "../../api/user";
+import StringUtils from "../../utils/StringUtils";
 
 const User = () => {
 
@@ -27,6 +28,9 @@ const User = () => {
     const [type, setType] = useState("success");
     const [alert, setAlert] = useState(false);
     const [id, setId] = useState(null);
+    const [blank, setBlank] = useState(false);
+    const [email, setEmail] = useState(false);
+    const [phone, setPhone] = useState(false);
     const loadData = (pageObj) => {
         listUser(pageObj).then(r => {
             if (r.data.records) {
@@ -55,6 +59,9 @@ const User = () => {
     }
 
     const handleInputChange = (e) => {
+        setPhone(false);
+        setBlank(false);
+        setEmail(false);
         const { name, value } = e.target;
         setFormData({
             ...formData,
@@ -64,6 +71,26 @@ const User = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!id) {
+            if (StringUtils.isEmpty(formData.realName)
+                || StringUtils.isEmpty(formData.username)
+                || StringUtils.isEmpty(formData.password)) {
+                setBlank(true);
+                return;
+            }
+            if (formData.phone) {
+                if (!StringUtils.isPhone(formData.phone)) {
+                    setPhone(true);
+                    return;
+                }
+            }
+            if (formData.email) {
+                if (!StringUtils.isEmail(formData.email)) {
+                    setEmail(true);
+                    return;
+                }
+            }
+        }
         try {
             if (id) {
                 updateUser(formData).then(res => {
@@ -162,7 +189,7 @@ const User = () => {
             <PopUp display={popup} onClose={()=>setPopup(false)}>
                 <form className="theme-form" onSubmit={handleSubmit}>
                     <label>
-                        Library Id:
+                        Library Id: (optional)
                         <input type="text" name="libraryId" value={formData.libraryId} onChange={handleInputChange} />
                     </label>
                     <label>
@@ -178,17 +205,20 @@ const User = () => {
                         <input type="text" name="realName" value={formData.realName} onChange={handleInputChange} />
                     </label>
                     <label>
-                        Email:
+                        Email: (optional)
                         <input type="text" name="email" value={formData.email} onChange={handleInputChange} />
                     </label>
                     <label>
-                        Phone:
+                        Phone: (optional)
                         <input type="text" name="phone" value={formData.phone} onChange={handleInputChange} />
                     </label>
                     <label>
-                        Role:
+                        Role: (optional)
                         <input type="text" name="role" value={formData.role} onChange={handleInputChange} />
                     </label>
+                    <p style={{color:'red',display:blank==true?"block":"none"}}>Username, password, real name cannot be blank</p>
+                    <p style={{color:'red',display:email==true?"block":"none"}}>Email format is wrong</p>
+                    <p style={{color:'red',display:phone==true?"block":"none"}}>Phone format is wrong</p>
                     <button type="submit">Submit</button>
                 </form>
             </PopUp>
