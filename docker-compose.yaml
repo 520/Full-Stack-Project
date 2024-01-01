@@ -1,0 +1,30 @@
+version: '3'
+services:
+  # Node.js 服务
+  node-app:
+    build:
+      context: ./backend-nodejs
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules  
+    depends_on:
+      - mongo
+
+  # MongoDB 服务
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data:/data/db
+
+  # React 前端服务
+  react-app:
+    build:
+      context: ./frontend-react
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
