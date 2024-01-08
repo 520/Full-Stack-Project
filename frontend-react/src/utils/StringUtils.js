@@ -1,6 +1,9 @@
 class StringUtils {
     static isEmpty(value) {
-        return value === null || value === undefined || value === '';
+        return Number.isNaN(value) ||
+            value === undefined ||
+            value === null ||
+            (value + "").trim() === '';
     }
     static isEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
