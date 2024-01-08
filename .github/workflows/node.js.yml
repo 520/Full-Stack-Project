@@ -29,6 +29,6 @@ jobs:
     - run: npm install
     - run: npm test
 
-defaults:
-  run:
-    working-directory: dart_project
+    defaults:
+      run:
+        working-directory: dart_project
