@@ -22,10 +22,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+    - uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        working-directory: frontend-react
     - run: npm install
+      working-directory: frontend-react
     - run: npm test
+      working-directory: frontend-react
