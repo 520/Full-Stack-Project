@@ -11,11 +11,11 @@ module.exports.listHistory = async (req, res, next) => {
     try {
         let email = "e";
         const user = await History.find({});
-        return res.json(Result.success(user));
+        res.json(Result.success(user));
     } catch (ex) {
         next(ex);
         winston.error("list history failed, reason:", ex);
-        return res.json(Result.failed("list history failed"));
+        res.json(Result.failed("list history failed"));
     }
 }
 
@@ -33,11 +33,11 @@ module.exports.getHistory = async (req, res, next) => {
         }).sort({createTime: -1})
             .skip((page - 1) * pageSize).limit(pageSize);
         const data = Page.new(user, page, totalPages);
-        return res.json(Result.success(data));
+        res.json(Result.success(data));
     } catch (ex) {
         next(ex);
         winston.error("get history failed, reason:", ex.toString());
-        return res.json(Result.failed("get history failed"));
+        res.json(Result.failed("get history failed"));
     }
 }
 
@@ -46,11 +46,11 @@ module.exports.addHistory = async (req, res, next) => {
         const createTime = TimeUtils.getCurrentFormattedTime();
         req.body.createTime = createTime;
         const user = await History.create(req.body);
-        return res.json(Result.success(user));
+        res.json(Result.success(user));
     } catch (ex) {
         next(ex);
         winston.error("add history failed, reason:", ex);
-        return res.json(Result.failed("add history failed"));
+        res.json(Result.failed("add history failed"));
     }
 }
 
@@ -59,11 +59,11 @@ module.exports.updateHistory = async (req, res, next) => {
         const {id} = req.body;
         const user = await History.findByIdAndUpdate(id,
             req.body);
-        return res.json(Result.success(user));
+        res.json(Result.success(user));
     } catch (ex) {
         next(ex);
         winston.error("update history failed, reason:", ex);
-        return res.json(Result.failed("update history failed"));
+        res.json(Result.failed("update history failed"));
     }
 }
 
@@ -74,13 +74,13 @@ module.exports.deleteHistory = async (req, res, next) => {
             const user = await History.deleteOne({
                 _id: id
             });
-            return res.json(Result.success(user));
+            res.json(Result.success(user));
         } else {
-            return res.json(Result.failed("id cannot be empty"));
+            res.json(Result.failed("id cannot be empty"));
         }
     } catch (ex) {
         next(ex);
         winston.error("delete history failed, reason:", ex);
-        return res.json(Result.failed("delete history failed"));
+        res.json(Result.failed("delete history failed"));
     }
 }

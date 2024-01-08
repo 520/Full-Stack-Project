@@ -23,11 +23,11 @@ module.exports.getToken = async (req, res, next) => {
                 return res.json(Result.success(user[0]));
             }
         }
-        return res.json(Result.failed("wrong username or password"));
+        res.json(Result.failed("wrong username or password"));
     } catch (ex) {
         next(ex);
         winston.error("get token failed, reason:", ex);
-        return res.json(Result.failed("get token failed"));
+        res.json(Result.failed("get token failed"));
     }
 }
 
@@ -41,11 +41,11 @@ module.exports.listUsers = async (req, res, next) => {
             .sort({createTime: -1})
             .skip((page - 1) * pageSize).limit(pageSize);
         const data = Page.new(user, page, totalPages);
-        return res.json(Result.success(data));
+        res.json(Result.success(data));
     } catch (ex) {
         next(ex);
         winston.error("get user failed, reason:", ex.toString());
-        return res.json(Result.failed("get user failed"));
+        res.json(Result.failed("get user failed"));
     }
 }
 
@@ -55,11 +55,11 @@ module.exports.getUser = async (req, res, next) => {
         const user = await User.findOne({
             id
         });
-        return res.json(Result.success(user));
+        res.json(Result.success(user));
     } catch (ex) {
         next(ex);
         winston.error("get user failed, reason:", ex);
-        return res.json(Result.failed("get user failed"));
+        res.json(Result.failed("get user failed"));
     }
 }
 
@@ -74,11 +74,11 @@ module.exports.addUser = async (req, res, next) => {
         const encryptedPassword = await tokenEncryptPassword(password);
         req.body.password = encryptedPassword;
         await User.create(req.body);
-        return res.json(Result.success("add user success"));
+        res.json(Result.success("add user success"));
     } catch (ex) {
         next(ex);
         winston.error("add user failed, reason:", ex);
-        return res.json(Result.failed("add user failed"));
+        res.json(Result.failed("add user failed"));
     }
 }
 
@@ -86,11 +86,11 @@ module.exports.updateUser = async (req, res, next) => {
     try {
         const {_id} = req.body;
         const user = await User.findByIdAndUpdate(_id, req.body);
-        return res.json(Result.success(user));
+        res.json(Result.success(user));
     } catch (ex) {
         next(ex);
         winston.error("update user failed, reason:", ex);
-        return res.json(Result.failed("update user failed"));
+        res.json(Result.failed("update user failed"));
     }
 }
 
@@ -100,10 +100,10 @@ module.exports.deleteUser = async (req, res, next) => {
         const user = await User.deleteOne({
             _id: id
         })
-        return res.json(Result.success(user));
+        res.json(Result.success(user));
     } catch (ex) {
         next(ex);
         winston.error("delete user failed, reason:", ex);
-        return res.json(Result.failed("delete user failed"));
+        res.json(Result.failed("delete user failed"));
     }
 }

@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {getBook, getBookByTitle} from "../../api/book";
-import {Pagination} from "../../component/Pagination";
+import Pagination from "../../component/Pagination";
 
 const Books = () => {
 

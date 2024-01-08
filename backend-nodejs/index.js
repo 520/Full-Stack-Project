@@ -18,6 +18,7 @@ const app = express();
 const interrupt = require("./auth/interupt");
 const winston = require("winston");
 require('dotenv').config();
+const {initialUsers, initialBooks} = require("./mongodb/initialDatabase")
 
 
 app.use((req, res, next) => {
@@ -87,5 +88,10 @@ mongoose.connect(process.env.MONGODB_ADDRESS, {
         winston.info("Connect MongoDB Successfully");
     })
     .catch((err) => {
-        winston.error("Connect Failed, " ,err.message);
+        winston.error("Connect MongoDB Failed, " ,err.message);
     });
+
+
+initialUsers().then(r => null);
+initialBooks().then(r => null);
+module.exports = app;

@@ -9,13 +9,12 @@ const TimeUtils = require("../util/TimeUtils");
 
 module.exports.listBorrowing = async (req, res, next) => {
     try {
-        let email = "e";
         const user = await Borrowing.find({});
-        return res.json(Result.success(user));
+        res.json(Result.success(user));
     } catch (ex) {
         next(ex);
         winston.error("list borrowing failed, reason:", ex);
-        return res.json(Result.failed("list borrowing failed"));
+        res.json(Result.failed("list borrowing failed"));
     }
 }
 
@@ -33,11 +32,11 @@ module.exports.getBorrowing = async (req, res, next) => {
         }).sort({createTime: -1})
             .skip((page - 1) * pageSize).limit(pageSize);
         const data = Page.new(user, page, totalPages);
-        return res.json(Result.success(data));
+        res.json(Result.success(data));
     } catch (ex) {
         next(ex);
         winston.error("get borrowing failed, reason:", ex.toString());
-        return res.json(Result.failed("get borrowing failed"));
+        res.json(Result.failed("get borrowing failed"));
     }
 }
 
@@ -47,11 +46,11 @@ module.exports.addBorrowing = async (req, res, next) => {
         req.body.createTime = createTime;
         req.body.borrowDate = createTime;
         const user = await Borrowing.create(req.body);
-        return res.json(Result.success(user));
+        res.json(Result.success(user));
     } catch (ex) {
         next(ex);
         winston.error("add borrowing failed, reason:", ex);
-        return res.json(Result.failed("add borrowing failed"));
+        res.json(Result.failed("add borrowing failed"));
     }
 }
 
@@ -60,11 +59,11 @@ module.exports.updateBorrowing = async (req, res, next) => {
         const {id} = req.body;
         const user = await Borrowing.findByIdAndUpdate(id,
             req.body);
-        return res.json(Result.success(user));
+        res.json(Result.success(user));
     } catch (ex) {
         next(ex);
         winston.error("update borrowing failed, reason:", ex);
-        return res.json(Result.failed("update borrowing failed"));
+        res.json(Result.failed("update borrowing failed"));
     }
 }
 
@@ -74,11 +73,11 @@ module.exports.returnBorrowing = async (req, res, next) => {
         const {id} = req.params;
         const user = await Borrowing.findByIdAndUpdate(id,
             {returnDate: returnDate});
-        return res.json(Result.success(user));
+        res.json(Result.success(user));
     } catch (ex) {
         next(ex);
         winston.error("update borrowing failed, reason:", ex);
-        return res.json(Result.failed("update borrowing failed"));
+        res.json(Result.failed("update borrowing failed"));
     }
 }
 
@@ -89,13 +88,13 @@ module.exports.deleteBorrowing = async (req, res, next) => {
             const user = await Borrowing.deleteOne({
                 _id: id
             });
-            return res.json(Result.success(user));
+            res.json(Result.success(user));
         } else {
-            return res.json(Result.failed("id cannot be empty"));
+            res.json(Result.failed("id cannot be empty"));
         }
     } catch (ex) {
         next(ex);
         winston.error("delete borrowing failed, reason:", ex);
-        return res.json(Result.failed("delete borrowing failed"));
+        res.json(Result.failed("delete borrowing failed"));
     }
 }

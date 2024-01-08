@@ -1,7 +1,7 @@
 import './index.css';
 import {useEffect, useState} from "react";
 import {getUser} from "../../api/user";
-import {Alert} from "../../component/Alert";
+import Alert from "../../component/Alert";
 import StringUtils from "../../utils/StringUtils";
 import {setCookie, setId, setRealName, setRole, setToken} from "../../utils/cookie";
 import {useNavigate} from "react-router-dom";

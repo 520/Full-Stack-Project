@@ -1,7 +1,7 @@
 import './index.css';
 import {useEffect, useState} from "react";
 import {getHistory,listHistory,addHistory,deleteHistory,updateHistory} from "../../api/history";
-import {Pagination} from "../../component/Pagination";
+import Pagination from "../../component/Pagination";
 import {datetimeNormalization} from "../../utils/string";
 import {getId} from "../../utils/cookie";
 

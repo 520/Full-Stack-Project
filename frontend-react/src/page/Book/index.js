@@ -1,11 +1,11 @@
 import './index.css';
 import {useEffect, useLayoutEffect, useState} from "react";
-import {Divider} from "../../component/Divider";
+import Divider from "../../component/Divider";
 import {useLocation} from "react-router-dom";
 import { getBookById} from "../../api/book";
-import {Comment} from "../../component/Comment";
+import Comment from "../../component/Comment";
 import {addComment, getComment} from "../../api/comment";
-import {Alert} from "../../component/Alert";
+import Alert from "../../component/Alert";
 import {addBorrowing} from "../../api/borrowing";
 import {addSave} from "../../api/save";
 import {getId, getRealName} from "../../utils/cookie";
