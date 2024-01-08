@@ -9,6 +9,11 @@ on:
   pull_request:
     branches: [ "test" ]
 
+defaults:
+  run:
+    working-directory: frontend-react
+
+
 jobs:
   build:
 
@@ -28,7 +33,3 @@ jobs:
         cache: 'npm'
     - run: npm install
     - run: npm test
-
-    defaults:
-      run:
-        working-directory: dart_project
