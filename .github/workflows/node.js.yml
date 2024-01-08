@@ -27,6 +27,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm install
-      working-directory: frontend-react
     - run: npm test
-      working-directory: frontend-react
+
+defaults:
+  run:
+    working-directory: dart_project
