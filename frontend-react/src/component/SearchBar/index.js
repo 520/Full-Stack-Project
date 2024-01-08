@@ -6,7 +6,7 @@ import {setGlobalVariable} from "../../redux/actions";
 import StringUtils from "../../utils/StringUtils";
 import {getId} from "../../utils/cookie";
 
-const SearchBar = ({apiJson, onSubmit}) => {
+export const SearchBar = ({apiJson, onSubmit}) => {
 
     const dispatch = useDispatch();
 
@@ -40,5 +40,3 @@ const SearchBar = ({apiJson, onSubmit}) => {
         </div>
     )
 }
-
-export default SearchBar;

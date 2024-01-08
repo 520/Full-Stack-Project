@@ -16,6 +16,8 @@ async function tokenEncryptPassword (password) {
 
 async function tokenComparePassword(password, encryptedPassword) {
     return new Promise((resolve) => {
+        console.log("1."+password);
+        console.log("2."+encryptedPassword);
         bcrypt.compare(password, encryptedPassword, (err, result) => {
             if (err) {
                 resolve(false);

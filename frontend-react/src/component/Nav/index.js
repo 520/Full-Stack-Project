@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import {getRealName, getRole} from "../../utils/cookie";
 import StringUtils from "../../utils/StringUtils";
 
-const Nav = ({apiJson, onSubmit}) => {
+export const Nav = ({apiJson, onSubmit}) => {
 
     useEffect(() => {
         setUsername(getRealName());
@@ -32,5 +32,3 @@ const Nav = ({apiJson, onSubmit}) => {
         </div>
     )
 }
-
-export default Nav;

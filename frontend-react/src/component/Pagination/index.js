@@ -1,7 +1,7 @@
 import "./index.css";
 import {useState} from "react";
 
-const Pagination = ({ totalPages, onPageChange }) => {
+export const Pagination = ({ totalPages, onPageChange }) => {
     const [currentPage, setCurrentPage] = useState(1);
 
     const handlePageChange = (page) => {
@@ -24,5 +24,4 @@ const Pagination = ({ totalPages, onPageChange }) => {
     );
 };
 
-export default Pagination;
 

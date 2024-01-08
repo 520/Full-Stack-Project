@@ -5,7 +5,7 @@ import io from 'socket.io-client';
 import {datetimeNormalization} from "../../utils/string";
 import TimeUtils from "../../utils/TimeUtils";
 import {getId, getRealName} from "../../utils/cookie";
-const ChatBox = ({apiJson, onSubmit}) => {
+export const ChatBox = ({apiJson, onSubmit}) => {
 
     const [display, setDisplay] = useState('none');
     const [content, setContent] = useState("");
@@ -100,5 +100,3 @@ const ChatBox = ({apiJson, onSubmit}) => {
             </div>
     )
 }
-
-export default ChatBox;

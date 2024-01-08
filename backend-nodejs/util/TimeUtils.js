@@ -1,7 +1,7 @@
 
 class TimeUtils {
     static getCurrentTimestamp() {
-        return Math.floor(Date.now() / 1000);
+        return Math.floor(Date.now() / 1000); // 以秒为单位的时间戳
     }
 
     static getCurrentFormattedTime() {

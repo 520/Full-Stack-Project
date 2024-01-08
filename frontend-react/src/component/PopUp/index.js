@@ -1,6 +1,6 @@
 import "./index.css";
 
-const PopUp = (props) => {
+export const PopUp = (props) => {
 
     const handleClose = () => {
         props.onClose();
@@ -13,5 +13,3 @@ const PopUp = (props) => {
         </div>
     )
 }
-
-export default PopUp;

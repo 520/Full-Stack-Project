@@ -1,7 +1,7 @@
 import "./index.css";
 import {useState} from "react";
 
-const Comment = ({ onSubmit }) => {
+export const Comment = ({ onSubmit }) => {
     const [score, setScore] = useState('5');
     const [comment, setComment] = useState('');
 
@@ -34,4 +34,3 @@ const Comment = ({ onSubmit }) => {
 };
 
 
-export default Comment;
