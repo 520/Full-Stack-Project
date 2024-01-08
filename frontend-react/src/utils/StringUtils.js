@@ -2,6 +2,10 @@ class StringUtils {
     static isEmpty(value) {
         return value === null || value === undefined || value === '';
     }
+    static isEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
     static isPhone(phoneNumber) {
         const phoneRegex = /^\d{10}$/;
         return phoneRegex.test(phoneNumber);
